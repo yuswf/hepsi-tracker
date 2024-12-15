@@ -1,7 +1,7 @@
 require('dotenv').config();
 const puppeteer = require('puppeteer');
 const getOrders = require('./getOrders');
-const trackerOrders = require('./trackerOrders');
+const trackOrders = require('./trackOrders');
 
 const run = async () => {
     const browser = await puppeteer.launch({
@@ -41,7 +41,7 @@ const run = async () => {
         waitUntil: 'networkidle2',
     });
 
-    const data = await trackerOrders(cargoPage, ids);
+    const data = await trackOrders(cargoPage, ids);
 
     console.log(data);
 }
