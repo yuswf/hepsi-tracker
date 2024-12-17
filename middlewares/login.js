@@ -30,7 +30,13 @@ const run = async () => {
     await buttons[1].click();
 
     const ids = await getOrders(page);
+    
+    if (ids.length === 0) {
+        await browser.close();
 
+        return console.log('no have orders');
+    }
+    
     await page.close();
 
     const cargoPage = await browser.newPage({
